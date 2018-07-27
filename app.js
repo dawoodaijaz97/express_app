@@ -3,16 +3,15 @@ console.log("application has started");
 var express = require("express");
 var app = express();
 var hbs = require("hbs");
-
-
+var port = process.env.PORT || 3000;
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials")
 hbs.registerHelper("get_year", () => {
     return new Date().getFullYear();
 });
 
-app.listen(3000, function() {
-    console.log("app has started on port 3000");
+app.listen(port, function() {
+    console.log("app has started on port" + port);
 });
 
 app.use(express.static(__dirname + "/public"));
